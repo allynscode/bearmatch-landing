@@ -6,7 +6,7 @@
   --outline: rgb(166, 183, 166);
   --inverse-primary: rgb(67, 82, 63);
   --on-primary: rgb(92, 121, 84);
-  --on-surface: rgb(9, 41, 6);
+  --on-surface: rgb(67, 82, 63);
   
   /* Additional variables */
   --card-bg: rgb(111, 128, 111);
@@ -113,6 +113,7 @@ header {
   max-width: 600px;
   margin: 0 auto;
   padding: 0 20px;
+  font-family: var(--font-primary);
   font-style: italic;
 }
 
@@ -137,7 +138,7 @@ main {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: var(--border-radius);
-  padding: 36px;
+  padding: 28px 28px 22px;
   box-shadow: 0 15px 40px var(--shadow);
   text-align: center;
   transition: all 0.3s ease;
@@ -146,13 +147,13 @@ main {
 
 .card h2 {
   font-family: var(--font-primary);
-  margin-bottom: 18px;
+  margin-bottom: 15px;
   color: var(--on-surface);
   font-size: 2rem;
 }
 
 .card p {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   color: var(--on-surface);
   font-size: 1.05rem;
 }
@@ -217,7 +218,7 @@ main {
 .tally-embed-container {
   position: relative;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   overflow: hidden;
   border-radius: calc(var(--border-radius) / 1.5);
   background-color: transparent;
@@ -237,7 +238,7 @@ main {
 
 /* Hide Tally.so branding (footer) if possible */
 .tally-embed-container iframe[style] {
-  height: 290px !important; /* Force height to hide the Tally branding */
+  height: 200px !important; /* Force height to hide the Tally branding */
 }
 
 /* Style Tally form elements - these are CSS variables but won't directly affect the iframe */
@@ -264,16 +265,16 @@ main {
 
 /* Adjust existing styles */
 .launch-info {
-  margin-top: 10px;
-  padding-top: 20px;
+  margin-top: 5px;
+  padding-top: 15px;
   border-top: 1px solid var(--outline);
 }
 
 .launch-info p {
   font-weight: bold;
   color: var(--inverse-primary);
-  font-size: 1.1rem;
-  letter-spacing: 0.8px;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
@@ -343,6 +344,7 @@ footer {
 
 .footer-content p {
   color: var(--secondary);
+  font-family: var(--font-primary);
   font-weight: 500;
   transition: all 0.3s ease;
   padding: 8px 12px;
@@ -351,6 +353,7 @@ footer {
 
 .privacy-link {
   color: var(--secondary);
+  font-family: var(--font-primary);
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -374,7 +377,21 @@ footer {
   }
   
   .card {
-    padding: 30px 24px;
+    padding: 24px 20px 18px;
+  }
+  
+  main {
+    padding: 20px 16px 40px;
+  }
+  
+  .card h2 {
+    margin-bottom: 12px;
+    font-size: 1.8rem;
+  }
+  
+  .card p {
+    margin-bottom: 16px;
+    font-size: 1rem;
   }
 }
 
@@ -388,11 +405,50 @@ footer {
   }
   
   .card h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+  
+  .card {
+    padding: 20px 16px 16px;
+    border-radius: 16px;
+  }
+  
+  main {
+    padding: 15px 12px 30px;
+  }
+  
+  .tally-embed-container {
+    border-radius: 12px;
+  }
+  
+  .tally-embed-container iframe[style] {
+    height: 180px !important;
+  }
+  
+  .launch-info {
+    margin-top: 2px;
+    padding-top: 12px;
+  }
+  
+  .launch-info p {
+    font-size: 0.95rem;
+    letter-spacing: 0.6px;
+  }
+  
+  footer {
+    padding: 18px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
   }
   
   .footer-content {
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
   }
 }
