@@ -1,0 +1,398 @@
+:root {
+  /* Light theme colors (updated for more chill vibe) */
+  --surface: linear-gradient(135deg, rgb(245, 243, 238), rgb(99, 132, 103));
+  --primary: rgb(111, 128, 111);
+  --secondary: rgb(216, 216, 216);
+  --outline: rgb(166, 183, 166);
+  --inverse-primary: rgb(67, 82, 63);
+  --on-primary: rgb(92, 121, 84);
+  --on-surface: rgb(9, 41, 6);
+  
+  /* Additional variables */
+  --card-bg: rgb(111, 128, 111);
+  --input-bg: white;
+  --button-hover: rgb(108, 154, 109);
+  --shadow: rgba(0, 0, 0, 0.08);
+  --border-radius: 20px;
+  --font-primary: 'DM Serif Display', serif;
+  --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+[data-theme="dark"] {
+  --surface: linear-gradient(135deg, rgb(99, 132, 103), rgb(47, 62, 43));
+  --primary: rgb(92, 121, 84);
+  --secondary: rgb(60, 60, 60);
+  --outline: rgb(100, 120, 100);
+  --inverse-primary: rgb(188, 207, 188);
+  --on-primary: rgb(220, 230, 220);
+  --on-surface: rgb(220, 240, 220);
+  
+  --card-bg: rgba(30, 40, 30, 0.85);
+  --input-bg: rgb(45, 55, 45);
+  --button-hover: rgb(120, 160, 120);
+  --shadow: rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--surface);
+  color: var(--on-surface);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+#theme-toggle-btn {
+  background: var(--primary);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+#theme-toggle-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 20px var(--shadow);
+}
+
+.sun-icon, .moon-icon {
+  fill: var(--on-primary);
+  transition: all 0.3s ease;
+  width: 22px;
+  height: 22px;
+}
+
+[data-theme="light"] .moon-icon,
+[data-theme="dark"] .sun-icon {
+  display: none;
+}
+
+/* Header */
+header {
+  padding: 75px 20px 40px;
+  text-align: center;
+}
+
+.logo h1 {
+  font-family: var(--font-primary);
+  font-size: 4.2rem;
+  color: var(--inverse-primary);
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tagline {
+  font-size: 1.35rem;
+  color: var(--on-surface);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-style: italic;
+}
+
+/* Main content */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px 50px;
+}
+
+.signup-section {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: var(--card-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--border-radius);
+  padding: 36px;
+  box-shadow: 0 15px 40px var(--shadow);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card h2 {
+  font-family: var(--font-primary);
+  margin-bottom: 18px;
+  color: var(--on-surface);
+  font-size: 2rem;
+}
+
+.card p {
+  margin-bottom: 25px;
+  color: var(--on-surface);
+  font-size: 1.05rem;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.signup-form input {
+  padding: 15px 18px;
+  border-radius: calc(var(--border-radius) / 1.5);
+  border: 2px solid var(--outline);
+  background-color: var(--input-bg);
+  font-size: 1.05rem;
+  color: var(--on-surface);
+  transition: all 0.3s ease;
+}
+
+.signup-form input:focus {
+  outline: none;
+  border-color: var(--on-primary);
+  box-shadow: 0 0 0 3px rgba(92, 121, 84, 0.2);
+}
+
+.signup-form button {
+  padding: 15px 20px;
+  background-color: var(--primary);
+  color: var(--on-primary);
+  border: none;
+  border-radius: calc(var(--border-radius) / 1.5);
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-form button:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.hidden {
+  display: none;
+}
+
+#thank-you {
+  padding: 20px;
+  background-color: var(--primary);
+  border-radius: calc(var(--border-radius) / 1.5);
+  color: var(--on-primary);
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tally.so embed styling */
+.tally-embed-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: calc(var(--border-radius) / 1.5);
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.tally-form {
+  border: none;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+/* Override Tally.so styles to match our theme */
+.tally-embed-container iframe {
+  background: transparent !important;
+}
+
+/* Hide Tally.so branding (footer) if possible */
+.tally-embed-container iframe[style] {
+  height: 290px !important; /* Force height to hide the Tally branding */
+}
+
+/* Style Tally form elements - these are CSS variables but won't directly affect the iframe */
+:root {
+  /* Add Tally.so specific variables - these are just for reference */
+  --tally-border-color: var(--outline);
+  --tally-button-background: var(--primary);
+  --tally-button-color: var(--on-primary);
+  --tally-button-hover: var(--button-hover);
+  --tally-success-message-bg: var(--primary);
+  --tally-success-message-color: var(--on-primary);
+}
+
+/* This applies to the success message if we can inject CSS */
+#tally-success-message {
+  background-color: var(--primary) !important;
+  color: var(--on-primary) !important;
+  padding: 16px !important;
+  border-radius: calc(var(--border-radius) / 1.5) !important;
+  margin-top: 10px !important;
+  font-family: var(--font-body) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Adjust existing styles */
+.launch-info {
+  margin-top: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--outline);
+}
+
+.launch-info p {
+  font-weight: bold;
+  color: var(--inverse-primary);
+  font-size: 1.1rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* Custom success message styling */
+.success-message {
+  margin: 15px 0 25px;
+  padding: 15px;
+  background-color: var(--primary);
+  color: var(--on-primary);
+  border-radius: calc(var(--border-radius) / 1.5);
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tally-success .tally-form {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Form submission animation */
+.form-submitted {
+  animation: pulse 1.2s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 20px 50px var(--shadow);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Footer */
+footer {
+  padding: 25px;
+  text-align: center;
+  background-color: var(--primary);
+  margin-top: auto;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.footer-content p {
+  color: var(--secondary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 15px;
+}
+
+.privacy-link {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 15px;
+}
+
+.privacy-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo h1 {
+    font-size: 3rem;
+  }
+  
+  .tagline {
+    font-size: 1.2rem;
+  }
+  
+  .card {
+    padding: 30px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo h1 {
+    font-size: 2.5rem;
+  }
+  
+  .tagline {
+    font-size: 1.1rem;
+  }
+  
+  .card h2 {
+    font-size: 1.6rem;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
