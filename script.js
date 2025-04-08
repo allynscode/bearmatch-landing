@@ -1,45 +1,23 @@
-// Theme toggle functionality
+// Page initialization functionality
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggleBtn = document.getElementById('theme-toggle-btn');
     
-    // Check for saved theme preference or use device preference
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    const savedTheme = localStorage.getItem('theme');
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
-        document.body.setAttribute('data-theme', 'dark');
-    } else {
-        document.body.setAttribute('data-theme', 'light');
+    // We've removed theme toggling since we only use dark theme now
+    // Hiding the toggle button since it's no longer needed
+    if (themeToggleBtn) {
+        themeToggleBtn.style.display = 'none';
     }
-    
-    // Toggle theme when button is clicked
-    themeToggleBtn.addEventListener('click', () => {
-        const currentTheme = document.body.getAttribute('data-theme') || 'light';
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        document.body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-    });
-    
-    // Listen for device theme changes
-    prefersDarkScheme.addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-            const newTheme = e.matches ? 'dark' : 'light';
-            document.body.setAttribute('data-theme', newTheme);
-        }
-    });
 
     // Listen for Tally.so form submission messages
     window.addEventListener('message', function(e) {
         if (e.data.type === 'tally-form:loaded') {
             console.log('Tally form loaded');
             
-            // Apply theme to Tally.so iframe (if possible)
+            // Always use dark theme for Tally.so iframe (if possible)
             try {
                 const tallyIframe = document.querySelector('.tally-embed-container iframe');
                 if (tallyIframe && tallyIframe.contentWindow) {
-                    const theme = document.body.getAttribute('data-theme') || 'light';
-                    tallyIframe.contentWindow.postMessage({ type: 'tally-theme', theme: theme }, '*');
+                    tallyIframe.contentWindow.postMessage({ type: 'tally-theme', theme: 'dark' }, '*');
                 }
             } catch (err) {
                 console.log('Could not set Tally theme:', err);
@@ -73,19 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     launchInfo.parentNode.insertBefore(successHeading, launchInfo);
                 }
             }
-        }
-    });
-    
-    // Update Tally form theme when our theme changes
-    themeToggleBtn.addEventListener('click', () => {
-        try {
-            const tallyIframe = document.querySelector('.tally-embed-container iframe');
-            if (tallyIframe && tallyIframe.contentWindow) {
-                const theme = document.body.getAttribute('data-theme') || 'light';
-                tallyIframe.contentWindow.postMessage({ type: 'tally-theme', theme: theme }, '*');
-            }
-        } catch (err) {
-            console.log('Could not update Tally theme:', err);
         }
     });
 });

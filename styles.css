@@ -1,36 +1,21 @@
 :root {
-  /* Light theme colors (updated for more chill vibe) */
-  --surface: linear-gradient(135deg, rgb(245, 243, 238), rgb(99, 132, 103));
-  --primary: rgb(111, 128, 111);
-  --secondary: rgb(216, 216, 216);
-  --outline: rgb(166, 183, 166);
-  --inverse-primary: rgb(67, 82, 63);
-  --on-primary: rgb(92, 121, 84);
-  --on-surface: rgb(67, 82, 63);
+  /* Base theme colors (dark theme as default) */
+  --surface: linear-gradient(135deg, rgb(85, 115, 89), rgb(40, 52, 37));
+  --primary: rgb(92, 121, 84);
+  --secondary: rgb(188, 207, 188);
+  --outline: rgb(120, 140, 120);
+  --inverse-primary: rgb(188, 207, 188);
+  --on-primary: rgb(240, 250, 240);
+  --on-surface: rgb(240, 255, 240);
   
   /* Additional variables */
-  --card-bg: rgb(111, 128, 111);
-  --input-bg: white;
-  --button-hover: rgb(108, 154, 109);
-  --shadow: rgba(0, 0, 0, 0.08);
+  --card-bg: rgba(35, 45, 35, 0.9);
+  --input-bg: rgb(45, 55, 45);
+  --button-hover: rgb(120, 160, 120);
+  --shadow: rgba(0, 0, 0, 0.3);
   --border-radius: 20px;
   --font-primary: 'DM Serif Display', serif;
   --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-[data-theme="dark"] {
-  --surface: linear-gradient(135deg, rgb(99, 132, 103), rgb(47, 62, 43));
-  --primary: rgb(92, 121, 84);
-  --secondary: rgb(60, 60, 60);
-  --outline: rgb(100, 120, 100);
-  --inverse-primary: rgb(188, 207, 188);
-  --on-primary: rgb(220, 230, 220);
-  --on-surface: rgb(220, 240, 220);
-  
-  --card-bg: rgba(30, 40, 30, 0.85);
-  --input-bg: rgb(45, 55, 45);
-  --button-hover: rgb(120, 160, 120);
-  --shadow: rgba(0, 0, 0, 0.2);
 }
 
 * {
@@ -49,45 +34,6 @@ body {
   flex-direction: column;
   transition: all 0.3s ease;
   letter-spacing: 0.3px;
-}
-
-/* Theme toggle */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 100;
-}
-
-#theme-toggle-btn {
-  background: var(--primary);
-  border: none;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 15px var(--shadow);
-  transition: all 0.3s ease;
-}
-
-#theme-toggle-btn:hover {
-  transform: scale(1.15);
-  box-shadow: 0 6px 20px var(--shadow);
-}
-
-.sun-icon, .moon-icon {
-  fill: var(--on-primary);
-  transition: all 0.3s ease;
-  width: 22px;
-  height: 22px;
-}
-
-[data-theme="light"] .moon-icon,
-[data-theme="dark"] .sun-icon {
-  display: none;
 }
 
 /* Header */
@@ -142,14 +88,15 @@ main {
   box-shadow: 0 15px 40px var(--shadow);
   text-align: center;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(188, 207, 188, 0.2);
 }
 
 .card h2 {
   font-family: var(--font-primary);
   margin-bottom: 15px;
-  color: var(--on-surface);
+  color: var(--inverse-primary);
   font-size: 2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .card p {
@@ -272,11 +219,10 @@ main {
 }
 
 .launch-info p {
-  font-weight: bold;
   color: var(--inverse-primary);
   font-size: 1.2rem;
   letter-spacing: 1px;
-  text-transform: uppercase;
+  font-family: var(--font-primary);
 }
 
 /* Custom success message styling */
@@ -329,10 +275,11 @@ main {
 footer {
   padding: 25px;
   text-align: center;
-  background-color: var(--primary);
+  background-color: rgba(35, 45, 35, 0.9);
   margin-top: auto;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+  border-top: 1px solid rgba(188, 207, 188, 0.2);
 }
 
 .footer-content {
@@ -350,6 +297,7 @@ footer {
   transition: all 0.3s ease;
   padding: 8px 12px;
   border-radius: 15px;
+  opacity: 0.85;
 }
 
 .privacy-link {
@@ -360,11 +308,13 @@ footer {
   transition: all 0.3s ease;
   padding: 8px 12px;
   border-radius: 15px;
+  opacity: 0.85;
 }
 
 .privacy-link:hover {
   background-color: rgba(255, 255, 255, 0.15);
   text-decoration: none;
+  opacity: 1;
 }
 
 /* Responsive adjustments */
